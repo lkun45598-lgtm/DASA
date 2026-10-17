@@ -1,0 +1,12 @@
+name: sa-pinns-gpu
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+      - tensorflow[and-cuda]==2.15.1
+      - numpy==1.26.4
+      - scipy==1.11.4
+      - matplotlib==3.7.5
+      - pyDOE==0.3.8

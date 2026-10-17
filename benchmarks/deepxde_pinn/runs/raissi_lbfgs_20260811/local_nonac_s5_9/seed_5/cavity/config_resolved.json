@@ -1,0 +1,122 @@
+{
+  "baseline_network": {
+    "activation": "tanh",
+    "architecture": "classical_fnn",
+    "hidden_layers": 6,
+    "initializer": "glorot_normal",
+    "input_mapping": "normalized_raw_coordinates",
+    "width": 128
+  },
+  "case": {
+    "case_id": "cavity",
+    "domain": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "family": "cavity",
+    "network": {
+      "activation": "tanh",
+      "fourier": "none",
+      "hidden_layers": 6,
+      "initializer": "glorot_normal",
+      "output_dim": 3,
+      "width": 128
+    },
+    "optimizer": {
+      "adam_steps": 27000,
+      "decay_rate": 0.9,
+      "decay_steps": 2000,
+      "lbfgs_steps": 1000,
+      "learning_rate": 0.001,
+      "loss_weights": {
+        "boundary": 100.0,
+        "initial": 100.0,
+        "residual": 1.0
+      },
+      "stages": [
+        5000,
+        2000,
+        10000,
+        10000
+      ]
+    },
+    "parameters": {
+      "pressure_gauge_weight": 1.0,
+      "reynolds": 100.0
+    },
+    "provenance": {
+      "corner_policy": "inferred",
+      "equation": "paper",
+      "network": "paper",
+      "optimizer": "paper",
+      "pressure_gauge": "inferred",
+      "sampling": "paper"
+    },
+    "sampling": {
+      "boundary": 512,
+      "initial": 0,
+      "method": "grid",
+      "residual": 2500,
+      "residual_grid": [
+        50,
+        50
+      ]
+    }
+  },
+  "execution": {
+    "cuda_visible_devices": "1",
+    "hostname": "ubuntu"
+  },
+  "loss_components": {
+    "configured_weights": [
+      1.0,
+      1.0,
+      1.0,
+      100.0,
+      1.0
+    ],
+    "effective_weights": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "names": [
+      "residual_0",
+      "residual_1",
+      "residual_2",
+      "boundary_velocity",
+      "gauge_pressure"
+    ]
+  },
+  "problem_metadata": {
+    "provenance": {
+      "corner_policy": "inferred",
+      "equation": "paper",
+      "network": "paper",
+      "optimizer": "paper",
+      "pressure_gauge": "inferred",
+      "sampling": "paper"
+    }
+  },
+  "run_budget": {
+    "adam_steps": 0,
+    "full_batch": true,
+    "lbfgs_calls": 1,
+    "lbfgs_steps": 1000
+  },
+  "seed": 5,
+  "training_counts": {
+    "boundary": 512,
+    "initial": 0,
+    "residual": 2500
+  },
+  "training_profile": "raissi_lbfgs"
+}

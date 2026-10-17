@@ -1,0 +1,114 @@
+{
+  "baseline_network": {
+    "activation": "tanh",
+    "architecture": "classical_fnn",
+    "hidden_layers": 6,
+    "initializer": "glorot_normal",
+    "input_mapping": "normalized_raw_coordinates",
+    "width": 128
+  },
+  "case": {
+    "case_id": "advection_diffusion",
+    "domain": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0
+      ]
+    ],
+    "family": "time_1d",
+    "network": {
+      "activation": "tanh",
+      "fourier": "periodic_unit",
+      "hidden_layers": 6,
+      "initializer": "glorot_normal",
+      "output_dim": 1,
+      "width": 128
+    },
+    "optimizer": {
+      "adam_steps": 23000,
+      "decay_rate": 0.9,
+      "decay_steps": 2000,
+      "lbfgs_steps": 1000,
+      "learning_rate": 0.001,
+      "loss_weights": {
+        "boundary": 100.0,
+        "initial": 100.0,
+        "residual": 1.0
+      },
+      "stages": [
+        1000,
+        2000,
+        10000,
+        10000
+      ]
+    },
+    "parameters": {
+      "kappa": 0.01,
+      "series_terms": 1000.0,
+      "velocity": 1.0
+    },
+    "provenance": {
+      "equation": "paper",
+      "network": "paper",
+      "network.fourier": "paper",
+      "optimizer": "paper",
+      "parameters.kappa": "inferred",
+      "sampling": "user"
+    },
+    "sampling": {
+      "boundary": 256,
+      "initial": 512,
+      "method": "lhs",
+      "residual": 25600,
+      "residual_grid": []
+    }
+  },
+  "execution": {
+    "cuda_visible_devices": "7",
+    "hostname": "ubuntu"
+  },
+  "loss_components": {
+    "configured_weights": [
+      1.0,
+      100.0,
+      100.0
+    ],
+    "effective_weights": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "names": [
+      "residual_0",
+      "boundary_values",
+      "initial_values"
+    ]
+  },
+  "problem_metadata": {
+    "provenance": {
+      "equation": "paper",
+      "network": "paper",
+      "network.fourier": "paper",
+      "optimizer": "paper",
+      "parameters.kappa": "inferred",
+      "sampling": "user"
+    }
+  },
+  "run_budget": {
+    "adam_steps": 0,
+    "full_batch": true,
+    "lbfgs_calls": 1,
+    "lbfgs_steps": 1000
+  },
+  "seed": 6,
+  "training_counts": {
+    "boundary": 256,
+    "initial": 512,
+    "residual": 25600
+  },
+  "training_profile": "raissi_lbfgs"
+}

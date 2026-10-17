@@ -1,0 +1,182 @@
+{
+  "config": {
+    "experiment_name": "cost_pinn",
+    "category": "cost",
+    "variant": "PINN",
+    "method": "pinn",
+    "backbone": {
+      "depth": 6,
+      "width": 128
+    },
+    "subnet": null,
+    "data": {
+      "n_interior_candidates": 10000,
+      "n_boundary_per_segment": 128,
+      "resample_every": 1000
+    },
+    "loss": {
+      "boundary_weight": 100.0
+    },
+    "optimization": {
+      "lr_backbone": 0.001,
+      "lr_subnet": 0.001,
+      "warmup_steps": 5000,
+      "subnet_pretrain_steps": 0,
+      "main_steps": 10000,
+      "finetune_steps": 10000,
+      "scheduler_step": 1000,
+      "scheduler_gamma": 0.7,
+      "subnet_update_every": 1,
+      "subnet_updates_per_backbone": 1,
+      "lbfgs_outer_steps": 1000,
+      "lbfgs_lr": 0.8,
+      "lbfgs_max_iter": 100,
+      "lbfgs_tolerance_grad": 1e-05,
+      "lbfgs_tolerance_change": 1e-09,
+      "lbfgs_history_size": 100,
+      "lbfgs_line_search_fn": null
+    },
+    "logging": {
+      "log_every": 1000,
+      "lbfgs_log_every": 10
+    }
+  },
+  "seed": 0,
+  "device": "cuda:0"
+}
+/home/lz/miniconda3/envs/pytorch/lib/python3.10/site-packages/torch/autograd/graph.py:823: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:180.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[warmup] 1/5000 loss=6.467e+01 lr_b=1.000e-03
+[warmup] 1000/5000 loss=2.449e-02 lr_b=1.000e-03
+[warmup] 2000/5000 loss=7.754e-03 lr_b=1.000e-03
+[warmup] 3000/5000 loss=2.523e-03 lr_b=1.000e-03
+[warmup] 4000/5000 loss=1.745e-03 lr_b=1.000e-03
+[warmup] 5000/5000 loss=9.518e-04 lr_b=1.000e-03
+[eval:after_warmup] rel_l2=4.621424e-02 max_abs=3.009228e-02
+[main] 1/10000 loss=1.260e-03 lr_b=1.000e-03
+[main] 1000/10000 loss=8.054e-04 lr_b=7.000e-04
+[main] 2000/10000 loss=5.430e-04 lr_b=4.900e-04
+[main] 3000/10000 loss=1.647e-03 lr_b=3.430e-04
+[main] 4000/10000 loss=3.815e-04 lr_b=2.401e-04
+[main] 5000/10000 loss=1.172e-03 lr_b=1.681e-04
+[main] 6000/10000 loss=2.178e-04 lr_b=1.176e-04
+[main] 7000/10000 loss=2.140e-04 lr_b=8.235e-05
+[main] 8000/10000 loss=2.246e-04 lr_b=5.765e-05
+[main] 9000/10000 loss=2.233e-04 lr_b=4.035e-05
+[main] 10000/10000 loss=2.408e-04 lr_b=2.825e-05
+[eval:after_main] rel_l2=2.429987e-02 max_abs=2.092929e-02
+[finetune] 1/10000 loss=4.059e-04 lr_b=2.825e-05
+[finetune] 1000/10000 loss=2.108e-04 lr_b=2.825e-05
+[finetune] 2000/10000 loss=1.845e-04 lr_b=2.825e-05
+[finetune] 3000/10000 loss=1.934e-04 lr_b=2.825e-05
+[finetune] 4000/10000 loss=2.354e-04 lr_b=2.825e-05
+[finetune] 5000/10000 loss=1.419e-04 lr_b=2.825e-05
+[finetune] 6000/10000 loss=2.191e-04 lr_b=2.825e-05
+[finetune] 7000/10000 loss=1.908e-04 lr_b=2.825e-05
+[finetune] 8000/10000 loss=2.040e-04 lr_b=2.825e-05
+[finetune] 9000/10000 loss=1.575e-04 lr_b=2.825e-05
+[finetune] 10000/10000 loss=1.228e-04 lr_b=2.825e-05
+[eval:after_finetune] rel_l2=1.522139e-02 max_abs=1.597471e-02
+[lbfgs] 1/1000 returned_loss=2.241e-04
+[lbfgs] 10/1000 returned_loss=4.958e-05
+[lbfgs] 20/1000 returned_loss=2.057e-05
+[lbfgs] 30/1000 returned_loss=1.246e-05
+[lbfgs] 40/1000 returned_loss=8.979e-06
+[lbfgs] 50/1000 returned_loss=7.907e-06
+[lbfgs] 60/1000 returned_loss=7.410e-06
+[lbfgs] 70/1000 returned_loss=6.999e-06
+[lbfgs] 80/1000 returned_loss=6.899e-06
+[lbfgs] 90/1000 returned_loss=6.736e-06
+[lbfgs] 100/1000 returned_loss=6.605e-06
+[lbfgs] 110/1000 returned_loss=6.555e-06
+[lbfgs] 120/1000 returned_loss=6.403e-06
+[lbfgs] 130/1000 returned_loss=6.344e-06
+[lbfgs] 140/1000 returned_loss=6.121e-06
+[lbfgs] 150/1000 returned_loss=6.081e-06
+[lbfgs] 160/1000 returned_loss=6.081e-06
+[lbfgs] 170/1000 returned_loss=6.081e-06
+[lbfgs] 180/1000 returned_loss=6.081e-06
+[lbfgs] 190/1000 returned_loss=6.081e-06
+[lbfgs] 200/1000 returned_loss=6.081e-06
+[lbfgs] 210/1000 returned_loss=6.081e-06
+[lbfgs] 220/1000 returned_loss=6.081e-06
+[lbfgs] 230/1000 returned_loss=6.081e-06
+[lbfgs] 240/1000 returned_loss=6.081e-06
+[lbfgs] 250/1000 returned_loss=6.081e-06
+[lbfgs] 260/1000 returned_loss=6.081e-06
+[lbfgs] 270/1000 returned_loss=6.081e-06
+[lbfgs] 280/1000 returned_loss=6.081e-06
+[lbfgs] 290/1000 returned_loss=6.081e-06
+[lbfgs] 300/1000 returned_loss=6.081e-06
+[lbfgs] 310/1000 returned_loss=6.081e-06
+[lbfgs] 320/1000 returned_loss=6.081e-06
+[lbfgs] 330/1000 returned_loss=6.081e-06
+[lbfgs] 340/1000 returned_loss=6.081e-06
+[lbfgs] 350/1000 returned_loss=6.081e-06
+[lbfgs] 360/1000 returned_loss=6.081e-06
+[lbfgs] 370/1000 returned_loss=6.081e-06
+[lbfgs] 380/1000 returned_loss=6.081e-06
+[lbfgs] 390/1000 returned_loss=6.081e-06
+[lbfgs] 400/1000 returned_loss=6.081e-06
+[lbfgs] 410/1000 returned_loss=6.081e-06
+[lbfgs] 420/1000 returned_loss=6.081e-06
+[lbfgs] 430/1000 returned_loss=6.081e-06
+[lbfgs] 440/1000 returned_loss=6.081e-06
+[lbfgs] 450/1000 returned_loss=6.081e-06
+[lbfgs] 460/1000 returned_loss=6.081e-06
+[lbfgs] 470/1000 returned_loss=6.081e-06
+[lbfgs] 480/1000 returned_loss=6.081e-06
+[lbfgs] 490/1000 returned_loss=6.081e-06
+[lbfgs] 500/1000 returned_loss=6.081e-06
+[lbfgs] 510/1000 returned_loss=6.081e-06
+[lbfgs] 520/1000 returned_loss=6.081e-06
+[lbfgs] 530/1000 returned_loss=6.081e-06
+[lbfgs] 540/1000 returned_loss=6.081e-06
+[lbfgs] 550/1000 returned_loss=6.081e-06
+[lbfgs] 560/1000 returned_loss=6.081e-06
+[lbfgs] 570/1000 returned_loss=6.081e-06
+[lbfgs] 580/1000 returned_loss=6.081e-06
+[lbfgs] 590/1000 returned_loss=6.081e-06
+[lbfgs] 600/1000 returned_loss=6.081e-06
+[lbfgs] 610/1000 returned_loss=6.081e-06
+[lbfgs] 620/1000 returned_loss=6.081e-06
+[lbfgs] 630/1000 returned_loss=6.081e-06
+[lbfgs] 640/1000 returned_loss=6.081e-06
+[lbfgs] 650/1000 returned_loss=6.081e-06
+[lbfgs] 660/1000 returned_loss=6.081e-06
+[lbfgs] 670/1000 returned_loss=6.081e-06
+[lbfgs] 680/1000 returned_loss=6.081e-06
+[lbfgs] 690/1000 returned_loss=6.081e-06
+[lbfgs] 700/1000 returned_loss=6.081e-06
+[lbfgs] 710/1000 returned_loss=6.081e-06
+[lbfgs] 720/1000 returned_loss=6.081e-06
+[lbfgs] 730/1000 returned_loss=6.081e-06
+[lbfgs] 740/1000 returned_loss=6.081e-06
+[lbfgs] 750/1000 returned_loss=6.081e-06
+[lbfgs] 760/1000 returned_loss=6.081e-06
+[lbfgs] 770/1000 returned_loss=6.081e-06
+[lbfgs] 780/1000 returned_loss=6.081e-06
+[lbfgs] 790/1000 returned_loss=6.081e-06
+[lbfgs] 800/1000 returned_loss=6.081e-06
+[lbfgs] 810/1000 returned_loss=6.081e-06
+[lbfgs] 820/1000 returned_loss=6.081e-06
+[lbfgs] 830/1000 returned_loss=6.081e-06
+[lbfgs] 840/1000 returned_loss=6.081e-06
+[lbfgs] 850/1000 returned_loss=6.081e-06
+[lbfgs] 860/1000 returned_loss=6.081e-06
+[lbfgs] 870/1000 returned_loss=6.081e-06
+[lbfgs] 880/1000 returned_loss=6.081e-06
+[lbfgs] 890/1000 returned_loss=6.081e-06
+[lbfgs] 900/1000 returned_loss=6.081e-06
+[lbfgs] 910/1000 returned_loss=6.081e-06
+[lbfgs] 920/1000 returned_loss=6.081e-06
+[lbfgs] 930/1000 returned_loss=6.081e-06
+[lbfgs] 940/1000 returned_loss=6.081e-06
+[lbfgs] 950/1000 returned_loss=6.081e-06
+[lbfgs] 960/1000 returned_loss=6.081e-06
+[lbfgs] 970/1000 returned_loss=6.081e-06
+[lbfgs] 980/1000 returned_loss=6.081e-06
+[lbfgs] 990/1000 returned_loss=6.081e-06
+[lbfgs] 1000/1000 returned_loss=6.081e-06
+[eval:final] rel_l2=1.213969e-02 max_abs=6.941758e-03
+[done] results_cost_unitmean_full_seed0/cost_pinn/seed_0/metrics.json

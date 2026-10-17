@@ -1,0 +1,6 @@
+{
+  "case": "lshape_poisson",
+  "l2_relative_error": 0.08605972718993593,
+  "maximum_pointwise_error": 0.07207608222961426,
+  "seed": 6
+}

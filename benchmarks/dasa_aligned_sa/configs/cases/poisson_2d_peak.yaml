@@ -1,0 +1,10 @@
+{
+  "case_id": "poisson_2d_peak",
+  "family": "static_2d",
+  "domain": [[0.0, 1.0], [0.0, 1.0]],
+  "parameters": {"a": 10.0},
+  "sampling": {"residual": 2500, "boundary": 50, "initial": 0, "method": "uniform", "residual_grid": []},
+  "network": {"hidden_layers": 6, "width": 128, "activation": "tanh", "initializer": "glorot_normal", "output_dim": 1, "fourier": "none"},
+  "optimizer": {"stages": [1000, 1000, 10000, 10000], "adam_steps": 22000, "lbfgs_steps": 1000, "learning_rate": 0.001, "decay_rate": 0.9, "decay_steps": 2000, "loss_weights": {"residual": 1.0, "boundary": 100.0, "initial": 100.0}},
+  "provenance": {"equation": "paper", "equation.y_factor": "inferred", "sampling": "paper", "network": "paper", "optimizer": "paper"}
+}

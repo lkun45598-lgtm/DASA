@@ -1,0 +1,6 @@
+{
+  "case": "allen_cahn",
+  "l2_relative_error": 0.991080759864803,
+  "maximum_pointwise_error": 1.0065143906158152,
+  "seed": 5
+}

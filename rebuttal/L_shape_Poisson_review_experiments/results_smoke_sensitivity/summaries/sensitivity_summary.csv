@@ -1,0 +1,2 @@
+axis,variant,n_seeds,subnet_architecture,lr_backbone,lr_subnet,subnet_to_backbone_updates,trainable_params,after_main_relative_l2_mean,after_main_relative_l2_std,after_main_max_abs_error_mean,after_main_max_abs_error_std,training_total_min_mean,relative_l2_change_vs_baseline_pct
+baseline,baseline_5x10_lr1e-3_ratio1to1,1,5x10,0.001,0.001,1:1,84321,6.643555062430609,0.0,0.5902062170306234,0.0,0.010969719985344758,0.0

@@ -1,0 +1,10 @@
+[2026-08-14T10:39:22+00:00] worker=13 gpu=6 group=stage_length variant=stage1_10000 seed=6
+[2026-08-14T10:39:28+00:00] FAILED status=1
+[2026-08-14T10:39:28+00:00] worker=13 gpu=6 group=stage_length variant=stage2_1000 seed=6
+[2026-08-14T10:39:35+00:00] FAILED status=1
+[2026-08-14T10:39:35+00:00] worker=13 gpu=6 group=stage_length variant=stage3_100000 seed=6
+[2026-08-14T10:39:42+00:00] FAILED status=1
+[2026-08-14T10:39:42+00:00] worker=13 gpu=6 finished
+[2026-08-14T10:45:46+00:00] worker=13 gpu=6 group=stage_length variant=stage1_10000 seed=8
+[2026-08-14T16:21:11+00:00] worker=13 gpu=6 group=stage_length variant=stage3_25000 seed=6
+[2026-08-14T20:50:33+00:00] worker=13 gpu=6 finished

@@ -1,0 +1,91 @@
+[2026-08-13T12:18:32+00:00] stage3_low_5000.json seed 0 device cuda:0
+{
+  "config": {
+    "experiment_name": "stage3_low_5000",
+    "category": "stage_length",
+    "variant": "stage3_5000",
+    "sensitivity_axis": "stage3_adversarial",
+    "method": "dasa",
+    "backbone": {
+      "type": "modified_mlp",
+      "depth": 6,
+      "width": 128
+    },
+    "subnet": {
+      "depth": 5,
+      "width": 10
+    },
+    "data": {
+      "n_interior_candidates": 10000,
+      "n_boundary_per_segment": 128,
+      "resample_every": 1000
+    },
+    "loss": {
+      "boundary_weight": 100.0
+    },
+    "optimization": {
+      "lr_backbone": 0.001,
+      "lr_subnet": 0.001,
+      "finetune_start_lr": 2.82475249e-05,
+      "warmup_steps": 5000,
+      "subnet_pretrain_steps": 2000,
+      "main_steps": 5000,
+      "finetune_steps": 10000,
+      "scheduler_step": 1000,
+      "scheduler_gamma": 0.7,
+      "subnet_update_every": 1,
+      "subnet_updates_per_backbone": 1,
+      "lbfgs_outer_steps": 0,
+      "lbfgs_lr": 0.8,
+      "lbfgs_max_iter": 100,
+      "lbfgs_tolerance_grad": 1e-05,
+      "lbfgs_tolerance_change": 1e-09,
+      "lbfgs_history_size": 100,
+      "lbfgs_line_search_fn": null
+    },
+    "logging": {
+      "log_every": 1000,
+      "lbfgs_log_every": 10
+    }
+  },
+  "seed": 0,
+  "device": "cuda:0"
+}
+/home/lz/miniconda3/envs/pytorch/lib/python3.10/site-packages/torch/nn/modules/linear.py:125: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:217.)
+  return F.linear(input, self.weight, self.bias)
+/home/lz/miniconda3/envs/pytorch/lib/python3.10/site-packages/torch/autograd/graph.py:823: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:217.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home/lz/miniconda3/envs/pytorch/lib/python3.10/site-packages/torch/autograd/graph.py:823: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:180.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[warmup] 1/5000 loss=4.595e+00 lr_b=1.000e-03
+[warmup] 1000/5000 loss=4.041e-03 lr_b=1.000e-03
+[warmup] 2000/5000 loss=2.107e-03 lr_b=1.000e-03
+[warmup] 3000/5000 loss=4.354e-04 lr_b=1.000e-03
+[warmup] 4000/5000 loss=2.433e-04 lr_b=1.000e-03
+[warmup] 5000/5000 loss=5.425e-04 lr_b=1.000e-03
+[eval:after_warmup] rel_l2=3.740682e-02 max_abs=1.874648e-02
+[subnet_pretrain] 1/2000 loss=2.090e-03 lr_b=1.000e-03
+[subnet_pretrain] 1000/2000 loss=3.254e-03 lr_b=1.000e-03
+[subnet_pretrain] 2000/2000 loss=4.134e-03 lr_b=1.000e-03
+[main] 1/5000 loss=7.189e-03 lr_b=1.000e-03
+[main] 1000/5000 loss=1.758e-04 lr_b=7.000e-04
+[main] 2000/5000 loss=5.462e-04 lr_b=4.900e-04
+[main] 3000/5000 loss=4.050e-04 lr_b=3.430e-04
+[main] 4000/5000 loss=2.883e-04 lr_b=2.401e-04
+[main] 5000/5000 loss=2.455e-04 lr_b=1.681e-04
+[eval:after_main] rel_l2=2.558812e-02 max_abs=2.143959e-02
+[finetune] reset backbone lr to 2.824752e-05
+[finetune] 1/10000 loss=4.530e-04 lr_b=2.825e-05
+[finetune] 1000/10000 loss=2.308e-04 lr_b=2.825e-05
+[finetune] 2000/10000 loss=1.869e-04 lr_b=2.825e-05
+[finetune] 3000/10000 loss=1.486e-04 lr_b=2.825e-05
+[finetune] 4000/10000 loss=1.288e-04 lr_b=2.825e-05
+[finetune] 5000/10000 loss=8.334e-05 lr_b=2.825e-05
+[finetune] 6000/10000 loss=1.259e-04 lr_b=2.825e-05
+[finetune] 7000/10000 loss=8.894e-05 lr_b=2.825e-05
+[finetune] 8000/10000 loss=8.993e-05 lr_b=2.825e-05
+[finetune] 9000/10000 loss=8.444e-05 lr_b=2.825e-05
+[finetune] 10000/10000 loss=5.476e-05 lr_b=2.825e-05
+[eval:after_finetune] rel_l2=9.911833e-03 max_abs=1.269096e-02
+[eval:final] rel_l2=9.911833e-03 max_abs=1.269096e-02
+[done] /home/lz/SA-PINNs/rebuttal/L_shape_Poisson_review_experiments/results_stage3_length_controlled_lr/stage3_low_5000/seed_0/metrics.json

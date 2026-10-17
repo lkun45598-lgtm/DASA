@@ -1,0 +1,10 @@
+{
+  "case_id": "cavity",
+  "family": "cavity",
+  "domain": [[0.0, 1.0], [0.0, 1.0]],
+  "parameters": {"reynolds": 100.0, "pressure_gauge_weight": 1.0},
+  "sampling": {"residual": 2500, "boundary": 512, "initial": 0, "method": "grid", "residual_grid": [50, 50]},
+  "network": {"hidden_layers": 6, "width": 128, "activation": "tanh", "initializer": "glorot_normal", "output_dim": 3, "fourier": "none"},
+  "optimizer": {"stages": [5000, 2000, 10000, 10000], "adam_steps": 27000, "lbfgs_steps": 1000, "learning_rate": 0.001, "decay_rate": 0.9, "decay_steps": 2000, "loss_weights": {"residual": 1.0, "boundary": 100.0, "initial": 100.0}},
+  "provenance": {"equation": "paper", "pressure_gauge": "inferred", "corner_policy": "inferred", "sampling": "paper", "network": "paper", "optimizer": "paper"}
+}

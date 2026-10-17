@@ -1,0 +1,6 @@
+{
+  "case": "poisson_2d_peak",
+  "l2_relative_error": 0.013577464439310955,
+  "maximum_pointwise_error": 0.00812702625989914,
+  "seed": 8
+}

@@ -1,0 +1,227 @@
+[2026-08-14T10:39:28+00:00] worker=9 gpu=4 group=stage_length variant=stage2_1000 seed=4
+Traceback (most recent call last):
+  File "/data1/user/lz/SA-PINNs/wave_equation/rebuttal_experiments/wave_experiment.py", line 758, in <module>
+    main()
+  File "/data1/user/lz/SA-PINNs/wave_equation/rebuttal_experiments/wave_experiment.py", line 742, in main
+    torch.cuda.reset_peak_memory_stats(device)
+  File "/home/lz/miniconda3/envs/pytorch/lib/python3.10/site-packages/torch/cuda/memory.py", line 344, in reset_peak_memory_stats
+    return torch._C._cuda_resetPeakMemoryStats(device)
+RuntimeError: Invalid device argument 
+[2026-08-14T10:39:35+00:00] FAILED status=1
+[2026-08-14T15:16:35+00:00] worker=4 gpu=2 group=stage_length variant=stage2_1000 seed=4
+/home/lz/miniconda3/envs/pytorch/lib/python3.10/site-packages/torch/autograd/graph.py:825: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /opt/conda/conda-bld/pytorch_1729647352509/work/aten/src/ATen/cuda/CublasHandlePool.cpp:135.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[stage1] 1/5000 loss=5.943713e+03 lr_b=1.000000e-03
+[stage1] 1000/5000 loss=2.533218e+02 lr_b=1.000000e-03
+[stage1] 2000/5000 loss=2.912529e+01 lr_b=1.000000e-03
+[stage1] 3000/5000 loss=7.292526e+00 lr_b=1.000000e-03
+[stage1] 4000/5000 loss=1.185759e+01 lr_b=1.000000e-03
+[stage1] 5000/5000 loss=6.339429e+00 lr_b=1.000000e-03
+[stage2] 1/1000 loss=4.990506e+01 lr_b=1.000000e-03
+[stage2] 1000/1000 loss=7.009794e+02 lr_b=1.000000e-03
+[stage3] 1/50000 loss=1.002760e+03 lr_b=1.000000e-03
+[stage3] 1000/50000 loss=2.021232e+03 lr_b=9.000000e-04
+[stage3] 2000/50000 loss=1.348542e+02 lr_b=8.100000e-04
+[stage3] 3000/50000 loss=2.489033e+01 lr_b=7.290000e-04
+[stage3] 4000/50000 loss=3.060117e+00 lr_b=6.561000e-04
+[stage3] 5000/50000 loss=3.981844e+02 lr_b=5.904900e-04
+[stage3] 6000/50000 loss=9.760115e+00 lr_b=5.314410e-04
+[stage3] 7000/50000 loss=2.597498e+01 lr_b=4.782969e-04
+[stage3] 8000/50000 loss=1.771697e+00 lr_b=4.304672e-04
+[stage3] 9000/50000 loss=1.975745e+00 lr_b=3.874205e-04
+[stage3] 10000/50000 loss=1.408453e+00 lr_b=3.486784e-04
+[stage3] 11000/50000 loss=1.867188e+00 lr_b=3.138106e-04
+[stage3] 12000/50000 loss=4.034232e-01 lr_b=2.824295e-04
+[stage3] 13000/50000 loss=5.264394e-01 lr_b=2.541866e-04
+[stage3] 14000/50000 loss=2.228930e-01 lr_b=2.287679e-04
+[stage3] 15000/50000 loss=2.075430e-01 lr_b=2.058911e-04
+[stage3] 16000/50000 loss=3.839571e-01 lr_b=1.853020e-04
+[stage3] 17000/50000 loss=1.936103e-01 lr_b=1.667718e-04
+[stage3] 18000/50000 loss=2.148650e-01 lr_b=1.500946e-04
+[stage3] 19000/50000 loss=1.440569e-01 lr_b=1.350852e-04
+[stage3] 20000/50000 loss=8.286397e-01 lr_b=1.215767e-04
+[stage3] 21000/50000 loss=9.824640e-02 lr_b=1.094190e-04
+[stage3] 22000/50000 loss=1.310072e-01 lr_b=9.847709e-05
+[stage3] 23000/50000 loss=7.813865e-02 lr_b=8.862938e-05
+[stage3] 24000/50000 loss=1.983735e-01 lr_b=7.976644e-05
+[stage3] 25000/50000 loss=1.058365e-01 lr_b=7.178980e-05
+[stage3] 26000/50000 loss=9.105153e-02 lr_b=6.461082e-05
+[stage3] 27000/50000 loss=1.144937e-01 lr_b=5.814974e-05
+[stage3] 28000/50000 loss=7.902577e-02 lr_b=5.233476e-05
+[stage3] 29000/50000 loss=7.431673e-02 lr_b=4.710129e-05
+[stage3] 30000/50000 loss=7.396761e-02 lr_b=4.239116e-05
+[stage3] 31000/50000 loss=6.474691e-02 lr_b=3.815204e-05
+[stage3] 32000/50000 loss=4.090468e-02 lr_b=3.433684e-05
+[stage3] 33000/50000 loss=4.559808e-02 lr_b=3.090315e-05
+[stage3] 34000/50000 loss=5.260312e-02 lr_b=2.781284e-05
+[stage3] 35000/50000 loss=6.444056e-02 lr_b=2.503156e-05
+[stage3] 36000/50000 loss=5.835693e-02 lr_b=2.252840e-05
+[stage3] 37000/50000 loss=4.849588e-02 lr_b=2.027556e-05
+[stage3] 38000/50000 loss=4.189666e-02 lr_b=1.824800e-05
+[stage3] 39000/50000 loss=4.345204e-02 lr_b=1.642320e-05
+[stage3] 40000/50000 loss=3.412222e-02 lr_b=1.478088e-05
+[stage3] 41000/50000 loss=3.728183e-02 lr_b=1.330279e-05
+[stage3] 42000/50000 loss=3.378204e-02 lr_b=1.197252e-05
+[stage3] 43000/50000 loss=5.243951e-02 lr_b=1.077526e-05
+[stage3] 44000/50000 loss=3.993731e-02 lr_b=9.697737e-06
+[stage3] 45000/50000 loss=5.073695e-02 lr_b=8.727964e-06
+[stage3] 46000/50000 loss=4.456023e-02 lr_b=7.855167e-06
+[stage3] 47000/50000 loss=3.321035e-02 lr_b=7.069650e-06
+[stage3] 48000/50000 loss=4.193260e-02 lr_b=6.362685e-06
+[stage3] 49000/50000 loss=3.580386e-02 lr_b=5.726417e-06
+[stage3] 50000/50000 loss=3.913132e-02 lr_b=5.153775e-06
+[eval:after_stage3] relative_l2=3.843400e-03 max_pointwise_error=6.664932e-03
+[stage4] 1/50000 loss=3.661007e-01 lr_b=5.153775e-06
+[stage4] 1000/50000 loss=3.993783e-02 lr_b=5.153775e-06
+[stage4] 2000/50000 loss=3.348992e-02 lr_b=5.153775e-06
+[stage4] 3000/50000 loss=2.531225e-02 lr_b=5.153775e-06
+[stage4] 4000/50000 loss=2.309633e-02 lr_b=5.153775e-06
+[stage4] 5000/50000 loss=2.762788e-02 lr_b=5.153775e-06
+[stage4] 6000/50000 loss=3.452056e-02 lr_b=5.153775e-06
+[stage4] 7000/50000 loss=2.423175e-02 lr_b=5.153775e-06
+[stage4] 8000/50000 loss=2.991434e-02 lr_b=5.153775e-06
+[stage4] 9000/50000 loss=2.206700e-02 lr_b=5.153775e-06
+[stage4] 10000/50000 loss=2.402324e-02 lr_b=5.153775e-06
+[stage4] 11000/50000 loss=2.037492e-02 lr_b=5.153775e-06
+[stage4] 12000/50000 loss=2.037646e-02 lr_b=5.153775e-06
+[stage4] 13000/50000 loss=2.141503e-02 lr_b=5.153775e-06
+[stage4] 14000/50000 loss=2.146549e-02 lr_b=5.153775e-06
+[stage4] 15000/50000 loss=2.330569e-02 lr_b=5.153775e-06
+[stage4] 16000/50000 loss=2.513340e-02 lr_b=5.153775e-06
+[stage4] 17000/50000 loss=1.778652e-02 lr_b=5.153775e-06
+[stage4] 18000/50000 loss=1.892260e-02 lr_b=5.153775e-06
+[stage4] 19000/50000 loss=2.069041e-02 lr_b=5.153775e-06
+[stage4] 20000/50000 loss=1.725388e-02 lr_b=5.153775e-06
+[stage4] 21000/50000 loss=1.359995e-02 lr_b=5.153775e-06
+[stage4] 22000/50000 loss=1.533677e-02 lr_b=5.153775e-06
+[stage4] 23000/50000 loss=1.855914e-02 lr_b=5.153775e-06
+[stage4] 24000/50000 loss=2.042784e-02 lr_b=5.153775e-06
+[stage4] 25000/50000 loss=1.209655e-02 lr_b=5.153775e-06
+[stage4] 26000/50000 loss=1.279716e-02 lr_b=5.153775e-06
+[stage4] 27000/50000 loss=1.789001e-02 lr_b=5.153775e-06
+[stage4] 28000/50000 loss=1.144208e-02 lr_b=5.153775e-06
+[stage4] 29000/50000 loss=1.161552e-02 lr_b=5.153775e-06
+[stage4] 30000/50000 loss=1.211951e-02 lr_b=5.153775e-06
+[stage4] 31000/50000 loss=1.349670e-02 lr_b=5.153775e-06
+[stage4] 32000/50000 loss=1.776029e-02 lr_b=5.153775e-06
+[stage4] 33000/50000 loss=1.369158e-02 lr_b=5.153775e-06
+[stage4] 34000/50000 loss=9.867713e-03 lr_b=5.153775e-06
+[stage4] 35000/50000 loss=1.246147e-02 lr_b=5.153775e-06
+[stage4] 36000/50000 loss=1.360814e-02 lr_b=5.153775e-06
+[stage4] 37000/50000 loss=1.264273e-02 lr_b=5.153775e-06
+[stage4] 38000/50000 loss=1.044693e-02 lr_b=5.153775e-06
+[stage4] 39000/50000 loss=9.785540e-03 lr_b=5.153775e-06
+[stage4] 40000/50000 loss=9.496723e-03 lr_b=5.153775e-06
+[stage4] 41000/50000 loss=9.002365e-03 lr_b=5.153775e-06
+[stage4] 42000/50000 loss=1.014071e-02 lr_b=5.153775e-06
+[stage4] 43000/50000 loss=9.846275e-03 lr_b=5.153775e-06
+[stage4] 44000/50000 loss=1.007986e-02 lr_b=5.153775e-06
+[stage4] 45000/50000 loss=1.164092e-02 lr_b=5.153775e-06
+[stage4] 46000/50000 loss=8.252412e-03 lr_b=5.153775e-06
+[stage4] 47000/50000 loss=9.994455e-03 lr_b=5.153775e-06
+[stage4] 48000/50000 loss=1.042571e-02 lr_b=5.153775e-06
+[stage4] 49000/50000 loss=1.041624e-02 lr_b=5.153775e-06
+[stage4] 50000/50000 loss=1.025594e-02 lr_b=5.153775e-06
+[lbfgs] 1/1000 returned_loss=9.914899e-02
+[lbfgs] 10/1000 returned_loss=1.317138e-02
+[lbfgs] 20/1000 returned_loss=5.072440e-03
+[lbfgs] 30/1000 returned_loss=2.587967e-03
+[lbfgs] 40/1000 returned_loss=1.573693e-03
+[lbfgs] 50/1000 returned_loss=1.052524e-03
+[lbfgs] 60/1000 returned_loss=7.602999e-04
+[lbfgs] 70/1000 returned_loss=5.748108e-04
+[lbfgs] 80/1000 returned_loss=4.613029e-04
+[lbfgs] 90/1000 returned_loss=3.856027e-04
+[lbfgs] 100/1000 returned_loss=3.358531e-04
+[lbfgs] 110/1000 returned_loss=2.969479e-04
+[lbfgs] 120/1000 returned_loss=2.605150e-04
+[lbfgs] 130/1000 returned_loss=2.366467e-04
+[lbfgs] 140/1000 returned_loss=2.203781e-04
+[lbfgs] 150/1000 returned_loss=2.026967e-04
+[lbfgs] 160/1000 returned_loss=1.904599e-04
+[lbfgs] 170/1000 returned_loss=1.858515e-04
+[lbfgs] 180/1000 returned_loss=1.759469e-04
+[lbfgs] 190/1000 returned_loss=1.684485e-04
+[lbfgs] 200/1000 returned_loss=1.625892e-04
+[lbfgs] 210/1000 returned_loss=1.585091e-04
+[lbfgs] 220/1000 returned_loss=1.494665e-04
+[lbfgs] 230/1000 returned_loss=1.450338e-04
+[lbfgs] 240/1000 returned_loss=1.418513e-04
+[lbfgs] 250/1000 returned_loss=1.384527e-04
+[lbfgs] 260/1000 returned_loss=1.351717e-04
+[lbfgs] 270/1000 returned_loss=1.333758e-04
+[lbfgs] 280/1000 returned_loss=1.308500e-04
+[lbfgs] 290/1000 returned_loss=1.279345e-04
+[lbfgs] 300/1000 returned_loss=1.256647e-04
+[lbfgs] 310/1000 returned_loss=1.235211e-04
+[lbfgs] 320/1000 returned_loss=1.221333e-04
+[lbfgs] 330/1000 returned_loss=1.203056e-04
+[lbfgs] 340/1000 returned_loss=1.185519e-04
+[lbfgs] 350/1000 returned_loss=1.166488e-04
+[lbfgs] 360/1000 returned_loss=1.150950e-04
+[lbfgs] 370/1000 returned_loss=1.138935e-04
+[lbfgs] 380/1000 returned_loss=1.128396e-04
+[lbfgs] 390/1000 returned_loss=1.113075e-04
+[lbfgs] 400/1000 returned_loss=1.106029e-04
+[lbfgs] 410/1000 returned_loss=1.079973e-04
+[lbfgs] 420/1000 returned_loss=1.071957e-04
+[lbfgs] 430/1000 returned_loss=1.061089e-04
+[lbfgs] 440/1000 returned_loss=1.055491e-04
+[lbfgs] 450/1000 returned_loss=1.044629e-04
+[lbfgs] 460/1000 returned_loss=1.036751e-04
+[lbfgs] 470/1000 returned_loss=1.026805e-04
+[lbfgs] 480/1000 returned_loss=1.014917e-04
+[lbfgs] 490/1000 returned_loss=1.005838e-04
+[lbfgs] 500/1000 returned_loss=9.974882e-05
+[lbfgs] 510/1000 returned_loss=9.843857e-05
+[lbfgs] 520/1000 returned_loss=9.731436e-05
+[lbfgs] 530/1000 returned_loss=9.585369e-05
+[lbfgs] 540/1000 returned_loss=9.476757e-05
+[lbfgs] 550/1000 returned_loss=9.319808e-05
+[lbfgs] 560/1000 returned_loss=9.213356e-05
+[lbfgs] 570/1000 returned_loss=9.059275e-05
+[lbfgs] 580/1000 returned_loss=8.988494e-05
+[lbfgs] 590/1000 returned_loss=8.815694e-05
+[lbfgs] 600/1000 returned_loss=8.760008e-05
+[lbfgs] 610/1000 returned_loss=8.684026e-05
+[lbfgs] 620/1000 returned_loss=8.610214e-05
+[lbfgs] 630/1000 returned_loss=8.537839e-05
+[lbfgs] 640/1000 returned_loss=8.490556e-05
+[lbfgs] 650/1000 returned_loss=8.415902e-05
+[lbfgs] 660/1000 returned_loss=8.328049e-05
+[lbfgs] 670/1000 returned_loss=8.291983e-05
+[lbfgs] 680/1000 returned_loss=8.189638e-05
+[lbfgs] 690/1000 returned_loss=8.147694e-05
+[lbfgs] 700/1000 returned_loss=8.039807e-05
+[lbfgs] 710/1000 returned_loss=7.997589e-05
+[lbfgs] 720/1000 returned_loss=7.925519e-05
+[lbfgs] 730/1000 returned_loss=7.846732e-05
+[lbfgs] 740/1000 returned_loss=7.794042e-05
+[lbfgs] 750/1000 returned_loss=7.700405e-05
+[lbfgs] 760/1000 returned_loss=7.605112e-05
+[lbfgs] 770/1000 returned_loss=7.536472e-05
+[lbfgs] 780/1000 returned_loss=7.478856e-05
+[lbfgs] 790/1000 returned_loss=7.445893e-05
+[lbfgs] 800/1000 returned_loss=7.403985e-05
+[lbfgs] 810/1000 returned_loss=7.340400e-05
+[lbfgs] 820/1000 returned_loss=7.292219e-05
+[lbfgs] 830/1000 returned_loss=7.240749e-05
+[lbfgs] 840/1000 returned_loss=7.212375e-05
+[lbfgs] 850/1000 returned_loss=7.152440e-05
+[lbfgs] 860/1000 returned_loss=7.107144e-05
+[lbfgs] 870/1000 returned_loss=7.058994e-05
+[lbfgs] 880/1000 returned_loss=6.998589e-05
+[lbfgs] 890/1000 returned_loss=6.958652e-05
+[lbfgs] 900/1000 returned_loss=6.903077e-05
+[lbfgs] 910/1000 returned_loss=6.842265e-05
+[lbfgs] 920/1000 returned_loss=6.787443e-05
+[lbfgs] 930/1000 returned_loss=6.755863e-05
+[lbfgs] 940/1000 returned_loss=6.715454e-05
+[lbfgs] 950/1000 returned_loss=6.691684e-05
+[lbfgs] 960/1000 returned_loss=6.650766e-05
+[lbfgs] 970/1000 returned_loss=6.612738e-05
+[lbfgs] 980/1000 returned_loss=6.583579e-05
+[lbfgs] 990/1000 returned_loss=6.539844e-05
+[lbfgs] 1000/1000 returned_loss=6.517328e-05
+[eval:final] relative_l2=3.643726e-05 max_pointwise_error=8.052588e-05
+[complete] /data1/user/lz/SA-PINNs/wave_equation/rebuttal_experiments/results_wave_stage_shard0_4090_20260814/stage_length/stage_length_stage2_1000/seed_4/metrics.json

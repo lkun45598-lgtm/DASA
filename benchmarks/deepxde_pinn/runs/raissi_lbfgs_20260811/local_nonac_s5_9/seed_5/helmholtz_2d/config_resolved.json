@@ -1,0 +1,116 @@
+{
+  "baseline_network": {
+    "activation": "tanh",
+    "architecture": "classical_fnn",
+    "hidden_layers": 6,
+    "initializer": "glorot_normal",
+    "input_mapping": "normalized_raw_coordinates",
+    "width": 128
+  },
+  "case": {
+    "case_id": "helmholtz_2d",
+    "domain": [
+      [
+        -1.0,
+        1.0
+      ],
+      [
+        -1.0,
+        1.0
+      ]
+    ],
+    "family": "static_2d",
+    "network": {
+      "activation": "tanh",
+      "fourier": "none",
+      "hidden_layers": 6,
+      "initializer": "glorot_normal",
+      "output_dim": 1,
+      "width": 128
+    },
+    "optimizer": {
+      "adam_steps": 22000,
+      "decay_rate": 0.9,
+      "decay_steps": 2000,
+      "lbfgs_steps": 1000,
+      "learning_rate": 0.001,
+      "loss_weights": {
+        "boundary": 100.0,
+        "initial": 100.0,
+        "residual": 1.0
+      },
+      "stages": [
+        1000,
+        1000,
+        10000,
+        10000
+      ]
+    },
+    "parameters": {
+      "a1": 1.0,
+      "a2": 4.0,
+      "k": 1.0
+    },
+    "provenance": {
+      "equation": "paper",
+      "network": "paper",
+      "optimizer": "paper",
+      "parameters.a1": "inferred",
+      "parameters.a2": "inferred",
+      "parameters.k": "inferred",
+      "sampling": "paper"
+    },
+    "sampling": {
+      "boundary": 200,
+      "initial": 0,
+      "method": "grid",
+      "residual": 10201,
+      "residual_grid": [
+        101,
+        101
+      ]
+    }
+  },
+  "execution": {
+    "cuda_visible_devices": "3",
+    "hostname": "ubuntu"
+  },
+  "loss_components": {
+    "configured_weights": [
+      1.0,
+      100.0
+    ],
+    "effective_weights": [
+      1.0,
+      1.0
+    ],
+    "names": [
+      "residual_0",
+      "boundary_values"
+    ]
+  },
+  "problem_metadata": {
+    "provenance": {
+      "equation": "paper",
+      "network": "paper",
+      "optimizer": "paper",
+      "parameters.a1": "inferred",
+      "parameters.a2": "inferred",
+      "parameters.k": "inferred",
+      "sampling": "paper"
+    }
+  },
+  "run_budget": {
+    "adam_steps": 0,
+    "full_batch": true,
+    "lbfgs_calls": 1,
+    "lbfgs_steps": 1000
+  },
+  "seed": 5,
+  "training_counts": {
+    "boundary": 200,
+    "initial": 0,
+    "residual": 10201
+  },
+  "training_profile": "raissi_lbfgs"
+}

@@ -1,0 +1,64 @@
+{
+  "equation": "u_tt - 4*u_xx = 0",
+  "domain": {
+    "t": [
+      0.0,
+      1.0
+    ],
+    "x": [
+      0.0,
+      1.0
+    ]
+  },
+  "method": "dasa",
+  "backbone": {
+    "type": "st_mff",
+    "depth": 6,
+    "width": 128
+  },
+  "subnet": {
+    "depth": 5,
+    "width": 10
+  },
+  "data": {
+    "n_interior": 256,
+    "n_initial": 128,
+    "n_boundary_per_side": 64,
+    "resample_every": 100,
+    "n_interior_lbfgs": 25600,
+    "n_initial_lbfgs": 512,
+    "n_boundary_per_side_lbfgs": 256,
+    "test_nt": 501,
+    "test_nx": 501
+  },
+  "loss": {
+    "initial_velocity_weight": 10000.0,
+    "condition_weight": 10000.0
+  },
+  "optimization": {
+    "lr_backbone": 0.001,
+    "lr_subnet": 0.001,
+    "warmup_steps": 5000,
+    "subnet_pretrain_steps": 4000,
+    "main_steps": 50000,
+    "finetune_steps": 50000,
+    "scheduler_step": 1000,
+    "scheduler_gamma": 0.9,
+    "subnet_update_every": 1,
+    "subnet_updates_per_backbone": 1,
+    "controlled_finetune_start_lr": 5.15377520732012e-06,
+    "lbfgs_outer_steps": 1000,
+    "lbfgs_lr": 0.8,
+    "lbfgs_max_iter": 100,
+    "lbfgs_tolerance_grad": 1e-05,
+    "lbfgs_tolerance_change": 1e-09,
+    "lbfgs_history_size": 100
+  },
+  "logging": {
+    "log_every": 1000,
+    "lbfgs_log_every": 10
+  },
+  "category": "stage_length",
+  "variant": "stage2_4000",
+  "experiment_name": "stage_length_stage2_4000"
+}

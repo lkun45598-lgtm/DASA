@@ -1,0 +1,38 @@
+{
+  "case_id": "lshape_poisson",
+  "convergence": {
+    "l2_relative_error": 0.0004906440255011441,
+    "maximum_pointwise_error": 0.001903325849891141
+  },
+  "equation_parameters": {
+    "forcing": 1.0
+  },
+  "generated_at": "2026-08-09T18:47:03.399578+00:00",
+  "generator_sha256": "15e5217f733b73014c3f6f6c11fce85cf31880a707ff7285dff9f58cdc79620b",
+  "grid_levels": [
+    101,
+    201,
+    401
+  ],
+  "reference_sha256": "cf36a6dcec2976282685819be066a3128b961e0c7a33058a0c25434c49b7b95f",
+  "solver": {
+    "runs": [
+      {
+        "grid_points": 101,
+        "method": "five_point_sparse_direct"
+      },
+      {
+        "grid_points": 201,
+        "method": "five_point_sparse_direct"
+      },
+      {
+        "grid_points": 401,
+        "method": "five_point_sparse_direct"
+      }
+    ]
+  },
+  "tolerances": {
+    "l2_relative_error": 0.0005,
+    "maximum_pointwise_error": 0.005
+  }
+}

@@ -1,0 +1,4 @@
+training_profile=raissi_lbfgs
+cases=advection_diffusion burgers cavity diffusion_reaction discontinuous_advection helmholtz_1d helmholtz_2d lshape_poisson poisson_1d_boundary poisson_1d_steep poisson_2d_peak poisson_2d_steep
+seeds=5 6 7 8 9
+workers_per_gpu=2

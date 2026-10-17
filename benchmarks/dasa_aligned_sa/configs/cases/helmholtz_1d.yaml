@@ -1,0 +1,10 @@
+{
+  "case_id": "helmholtz_1d",
+  "family": "static_1d",
+  "domain": [[0.0, 1.0]],
+  "parameters": {"frequency": 20.0, "q": 3947.8417604357433},
+  "sampling": {"residual": 500, "boundary": 2, "initial": 0, "method": "lhs", "residual_grid": []},
+  "network": {"hidden_layers": 6, "width": 128, "activation": "tanh", "initializer": "glorot_normal", "output_dim": 1, "fourier": "none"},
+  "optimizer": {"stages": [1000, 500, 10000, 10000], "adam_steps": 21500, "lbfgs_steps": 0, "learning_rate": 0.001, "decay_rate": 0.9, "decay_steps": 2000, "loss_weights": {"residual": 1.0, "boundary": 100.0, "initial": 100.0}},
+  "provenance": {"equation": "paper", "parameters.q": "user", "sampling": "paper", "network": "paper", "optimizer": "paper"}
+}

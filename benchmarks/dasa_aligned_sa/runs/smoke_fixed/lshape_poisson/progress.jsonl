@@ -1,0 +1,3 @@
+{"boundary_loss": 0.0221781637519598, "elapsed_seconds": 6.615222215652466, "extra_loss": 0.0, "learning_rate": 0.001, "phase": "adam", "residual_loss": 0.3309428095817566, "step": 1, "total_loss": 2.5487592220306396}
+{"boundary_loss": 0.012790584936738014, "elapsed_seconds": 6.635941028594971, "extra_loss": 0.0, "learning_rate": 0.001, "phase": "adam", "residual_loss": 0.2857917845249176, "step": 2, "total_loss": 1.5648502111434937}
+{"final_loss": 0.3004326820373535, "function_evaluations": 3, "iterations": 1, "phase": "lbfgs", "success": false}

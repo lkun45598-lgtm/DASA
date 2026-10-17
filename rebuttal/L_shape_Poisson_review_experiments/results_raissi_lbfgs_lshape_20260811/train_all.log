@@ -1,0 +1,165 @@
+{
+  "config": {
+    "experiment_name": "cost_pinn_raissi_lbfgs",
+    "category": "cost",
+    "variant": "PINN-Raissi-LBFGS",
+    "method": "pinn",
+    "backbone": {
+      "type": "vanilla_mlp",
+      "depth": 6,
+      "width": 128
+    },
+    "subnet": null,
+    "data": {
+      "n_interior_candidates": 10000,
+      "n_boundary_per_segment": 128,
+      "resample_every": 0
+    },
+    "loss": {
+      "boundary_weight": 1.0
+    },
+    "optimization": {
+      "lr_backbone": 0.001,
+      "lr_subnet": 0.001,
+      "warmup_steps": 0,
+      "subnet_pretrain_steps": 0,
+      "main_steps": 0,
+      "finetune_steps": 0,
+      "scheduler_step": 1000,
+      "scheduler_gamma": 0.7,
+      "subnet_update_every": 1,
+      "subnet_updates_per_backbone": 1,
+      "lbfgs_outer_steps": 1,
+      "lbfgs_lr": 0.8,
+      "lbfgs_max_iter": 1000,
+      "lbfgs_tolerance_grad": 1e-05,
+      "lbfgs_tolerance_change": 1e-09,
+      "lbfgs_history_size": 100,
+      "lbfgs_line_search_fn": null
+    },
+    "logging": {
+      "log_every": 1000,
+      "lbfgs_log_every": 1
+    }
+  },
+  "seed": 0,
+  "device": "cuda:0"
+}
+[eval:after_warmup] rel_l2=3.628591e+00 max_abs=5.506454e-01
+[eval:after_main] rel_l2=3.628591e+00 max_abs=5.506454e-01
+[eval:after_finetune] rel_l2=3.628591e+00 max_abs=5.506454e-01
+/home/lz/miniconda3/envs/pytorch/lib/python3.10/site-packages/torch/autograd/graph.py:825: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /opt/conda/conda-bld/pytorch_1729647352509/work/aten/src/ATen/cuda/CublasHandlePool.cpp:135.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[lbfgs] 1/1 returned_loss=1.074e+00
+[eval:final] rel_l2=4.219058e-01 max_abs=1.193740e-01
+[done] /data1/user/lz/SA-PINNs/rebuttal/L_shape_Poisson_review_experiments/results_raissi_lbfgs_lshape_20260811/cost_pinn_raissi_lbfgs/seed_0/metrics.json
+{
+  "config": {
+    "experiment_name": "cost_pinn_raissi_lbfgs",
+    "category": "cost",
+    "variant": "PINN-Raissi-LBFGS",
+    "method": "pinn",
+    "backbone": {
+      "type": "vanilla_mlp",
+      "depth": 6,
+      "width": 128
+    },
+    "subnet": null,
+    "data": {
+      "n_interior_candidates": 10000,
+      "n_boundary_per_segment": 128,
+      "resample_every": 0
+    },
+    "loss": {
+      "boundary_weight": 1.0
+    },
+    "optimization": {
+      "lr_backbone": 0.001,
+      "lr_subnet": 0.001,
+      "warmup_steps": 0,
+      "subnet_pretrain_steps": 0,
+      "main_steps": 0,
+      "finetune_steps": 0,
+      "scheduler_step": 1000,
+      "scheduler_gamma": 0.7,
+      "subnet_update_every": 1,
+      "subnet_updates_per_backbone": 1,
+      "lbfgs_outer_steps": 1,
+      "lbfgs_lr": 0.8,
+      "lbfgs_max_iter": 1000,
+      "lbfgs_tolerance_grad": 1e-05,
+      "lbfgs_tolerance_change": 1e-09,
+      "lbfgs_history_size": 100,
+      "lbfgs_line_search_fn": null
+    },
+    "logging": {
+      "log_every": 1000,
+      "lbfgs_log_every": 1
+    }
+  },
+  "seed": 1,
+  "device": "cuda:0"
+}
+[eval:after_warmup] rel_l2=1.062464e+00 max_abs=1.505345e-01
+[eval:after_main] rel_l2=1.062464e+00 max_abs=1.505345e-01
+[eval:after_finetune] rel_l2=1.062464e+00 max_abs=1.505345e-01
+/home/lz/miniconda3/envs/pytorch/lib/python3.10/site-packages/torch/autograd/graph.py:825: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /opt/conda/conda-bld/pytorch_1729647352509/work/aten/src/ATen/cuda/CublasHandlePool.cpp:135.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[lbfgs] 1/1 returned_loss=9.823e-01
+[eval:final] rel_l2=2.172538e-01 max_abs=7.888746e-02
+[done] /data1/user/lz/SA-PINNs/rebuttal/L_shape_Poisson_review_experiments/results_raissi_lbfgs_lshape_20260811/cost_pinn_raissi_lbfgs/seed_1/metrics.json
+{
+  "config": {
+    "experiment_name": "cost_pinn_raissi_lbfgs",
+    "category": "cost",
+    "variant": "PINN-Raissi-LBFGS",
+    "method": "pinn",
+    "backbone": {
+      "type": "vanilla_mlp",
+      "depth": 6,
+      "width": 128
+    },
+    "subnet": null,
+    "data": {
+      "n_interior_candidates": 10000,
+      "n_boundary_per_segment": 128,
+      "resample_every": 0
+    },
+    "loss": {
+      "boundary_weight": 1.0
+    },
+    "optimization": {
+      "lr_backbone": 0.001,
+      "lr_subnet": 0.001,
+      "warmup_steps": 0,
+      "subnet_pretrain_steps": 0,
+      "main_steps": 0,
+      "finetune_steps": 0,
+      "scheduler_step": 1000,
+      "scheduler_gamma": 0.7,
+      "subnet_update_every": 1,
+      "subnet_updates_per_backbone": 1,
+      "lbfgs_outer_steps": 1,
+      "lbfgs_lr": 0.8,
+      "lbfgs_max_iter": 1000,
+      "lbfgs_tolerance_grad": 1e-05,
+      "lbfgs_tolerance_change": 1e-09,
+      "lbfgs_history_size": 100,
+      "lbfgs_line_search_fn": null
+    },
+    "logging": {
+      "log_every": 1000,
+      "lbfgs_log_every": 1
+    }
+  },
+  "seed": 2,
+  "device": "cuda:0"
+}
+[eval:after_warmup] rel_l2=2.076209e+00 max_abs=2.979990e-01
+[eval:after_main] rel_l2=2.076209e+00 max_abs=2.979990e-01
+[eval:after_finetune] rel_l2=2.076209e+00 max_abs=2.979990e-01
+/home/lz/miniconda3/envs/pytorch/lib/python3.10/site-packages/torch/autograd/graph.py:825: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /opt/conda/conda-bld/pytorch_1729647352509/work/aten/src/ATen/cuda/CublasHandlePool.cpp:135.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[lbfgs] 1/1 returned_loss=1.025e+00
+[eval:final] rel_l2=3.312282e-01 max_abs=1.022296e-01
+[done] /data1/user/lz/SA-PINNs/rebuttal/L_shape_Poisson_review_experiments/results_raissi_lbfgs_lshape_20260811/cost_pinn_raissi_lbfgs/seed_2/metrics.json

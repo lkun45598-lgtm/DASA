@@ -1,0 +1,46 @@
+{
+  "experiment_name": "sens_baseline",
+  "category": "sensitivity",
+  "variant": "baseline_5x10_lr1e-3_ratio1to1",
+  "method": "dasa",
+  "backbone": {
+    "depth": 6,
+    "width": 128
+  },
+  "subnet": {
+    "depth": 5,
+    "width": 10
+  },
+  "data": {
+    "n_interior_candidates": 10000,
+    "n_boundary_per_segment": 128,
+    "resample_every": 1000
+  },
+  "loss": {
+    "boundary_weight": 100.0
+  },
+  "optimization": {
+    "lr_backbone": 0.001,
+    "lr_subnet": 0.001,
+    "warmup_steps": 5000,
+    "subnet_pretrain_steps": 2000,
+    "main_steps": 10000,
+    "finetune_steps": 0,
+    "scheduler_step": 1000,
+    "scheduler_gamma": 0.7,
+    "subnet_update_every": 1,
+    "subnet_updates_per_backbone": 1,
+    "lbfgs_outer_steps": 0,
+    "lbfgs_lr": 0.8,
+    "lbfgs_max_iter": 100,
+    "lbfgs_tolerance_grad": 1e-05,
+    "lbfgs_tolerance_change": 1e-09,
+    "lbfgs_history_size": 100,
+    "lbfgs_line_search_fn": null
+  },
+  "logging": {
+    "log_every": 1000,
+    "lbfgs_log_every": 10
+  },
+  "sensitivity_axis": "baseline"
+}

@@ -1,0 +1,10 @@
+{
+  "case_id": "allen_cahn",
+  "family": "time_1d",
+  "domain": [[0.0, 1.0], [-1.0, 1.0]],
+  "parameters": {"diffusion": 0.0001, "reaction": 5.0},
+  "sampling": {"residual": 25600, "boundary": 256, "initial": 512, "method": "lhs", "residual_grid": []},
+  "network": {"hidden_layers": 6, "width": 128, "activation": "tanh", "initializer": "glorot_normal", "output_dim": 1, "fourier": "periodic_unit"},
+  "optimizer": {"stages": [2000, 2000, 150000, 150000], "adam_steps": 304000, "lbfgs_steps": 0, "learning_rate": 0.001, "decay_rate": 0.9, "decay_steps": 2000, "loss_weights": {"residual": 1.0, "boundary": 100.0, "initial": 100.0}},
+  "provenance": {"equation": "paper", "sampling": "user", "network": "user", "network.fourier": "paper", "optimizer.stage2": "inferred", "optimizer.stage4": "inferred"}
+}

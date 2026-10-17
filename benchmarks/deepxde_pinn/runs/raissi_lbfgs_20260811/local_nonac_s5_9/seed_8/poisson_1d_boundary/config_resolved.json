@@ -1,0 +1,102 @@
+{
+  "baseline_network": {
+    "activation": "tanh",
+    "architecture": "classical_fnn",
+    "hidden_layers": 6,
+    "initializer": "glorot_normal",
+    "input_mapping": "normalized_raw_coordinates",
+    "width": 128
+  },
+  "case": {
+    "case_id": "poisson_1d_boundary",
+    "domain": [
+      [
+        -1.0,
+        1.0
+      ]
+    ],
+    "family": "static_1d",
+    "network": {
+      "activation": "tanh",
+      "fourier": "none",
+      "hidden_layers": 6,
+      "initializer": "glorot_normal",
+      "output_dim": 1,
+      "width": 128
+    },
+    "optimizer": {
+      "adam_steps": 41500,
+      "decay_rate": 0.9,
+      "decay_steps": 2000,
+      "lbfgs_steps": 0,
+      "learning_rate": 0.001,
+      "loss_weights": {
+        "boundary": 100.0,
+        "initial": 100.0,
+        "residual": 1.0
+      },
+      "stages": [
+        1000,
+        500,
+        20000,
+        20000
+      ]
+    },
+    "parameters": {
+      "frequency": 5.0,
+      "layer_scale": 0.01
+    },
+    "provenance": {
+      "equation": "paper",
+      "network": "paper",
+      "optimizer": "paper",
+      "sampling": "paper"
+    },
+    "sampling": {
+      "boundary": 2,
+      "initial": 0,
+      "method": "lhs",
+      "residual": 500,
+      "residual_grid": []
+    }
+  },
+  "execution": {
+    "cuda_visible_devices": "4",
+    "hostname": "ubuntu"
+  },
+  "loss_components": {
+    "configured_weights": [
+      1.0,
+      100.0
+    ],
+    "effective_weights": [
+      1.0,
+      1.0
+    ],
+    "names": [
+      "residual_0",
+      "boundary_values"
+    ]
+  },
+  "problem_metadata": {
+    "provenance": {
+      "equation": "paper",
+      "network": "paper",
+      "optimizer": "paper",
+      "sampling": "paper"
+    }
+  },
+  "run_budget": {
+    "adam_steps": 0,
+    "full_batch": true,
+    "lbfgs_calls": 1,
+    "lbfgs_steps": 1000
+  },
+  "seed": 8,
+  "training_counts": {
+    "boundary": 2,
+    "initial": 0,
+    "residual": 500
+  },
+  "training_profile": "raissi_lbfgs"
+}

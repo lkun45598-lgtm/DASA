@@ -1,0 +1,6 @@
+{
+  "case": "poisson_1d_boundary",
+  "l2_relative_error": 36.073779815415435,
+  "maximum_pointwise_error": 8.77305802017047,
+  "seed": 8
+}

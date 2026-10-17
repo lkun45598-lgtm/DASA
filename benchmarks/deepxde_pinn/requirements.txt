@@ -1,0 +1,2 @@
+deepxde==1.15.0
+scikit-optimize==0.10.2

@@ -1,0 +1,194 @@
+#!/usr/bin/env python3
+"""Plot matched PINN/DASA training-stage time composition on two PDEs."""
+from __future__ import annotations
+
+import json
+import os
+import statistics
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+os.environ.setdefault("MPLCONFIGDIR", "/tmp/sa_pinns_matplotlib")
+
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
+
+METHODS = ("PINN", "DASA")
+METHOD_DIRS = {"PINN": "pinn", "DASA": "dasa"}
+LABELS = {"PINN": "PINN", "DASA": "DASA-PINN"}
+STAGES = (
+    "Warm-up (S1)",
+    "Subnet pre-training (S2)",
+    "Main Adam (S3)",
+    "Fine-tuning (S4)",
+    "L-BFGS",
+)
+METHOD_COLORS = {"PINN": "#1F4E79", "DASA": "#B5472E"}
+METHOD_MARKERS = {"PINN": "o", "DASA": "D"}
+EXPERIMENTS = {
+    "L-shaped Poisson": {
+        "root": ROOT.parents[1] / "results_cost_unitmean_full_seed0",
+        "stage_keys": {
+            "Warm-up (S1)": "warmup",
+            "Subnet pre-training (S2)": "subnet_pretrain",
+            "Main Adam (S3)": "main",
+            "Fine-tuning (S4)": "finetune",
+            "L-BFGS": "lbfgs",
+        },
+    },
+    "Wave equation": {
+        "root": (
+            ROOT.parents[3]
+            / "wave_equation"
+            / "rebuttal_experiments"
+            / "preliminary_stage4_seed0_4_20260815"
+            / "merged"
+            / "cost"
+        ),
+        "stage_keys": {
+            "Warm-up (S1)": "stage1",
+            "Subnet pre-training (S2)": "stage2",
+            "Main Adam (S3)": "stage3",
+            "Fine-tuning (S4)": "stage4",
+            "L-BFGS": "lbfgs",
+        },
+    },
+}
+
+
+def load_stage_summary(config: dict[str, object]) -> dict[str, dict[str, object]]:
+    root = config["root"]
+    stage_keys = config["stage_keys"]
+    if not isinstance(root, Path) or not isinstance(stage_keys, dict):
+        raise TypeError("Invalid experiment configuration")
+
+    summary: dict[str, dict[str, object]] = {}
+    for method in METHODS:
+        stage_samples = {stage: [] for stage in STAGES}
+        total_samples = []
+        for seed in range(3):
+            metrics_path = root / f"cost_{METHOD_DIRS[method]}" / f"seed_{seed}" / "metrics.json"
+            with metrics_path.open(encoding="utf-8") as handle:
+                metrics = json.load(handle)
+
+            stage_minutes = {
+                stage: float(metrics["stage_timings"][stage_keys[stage]]["elapsed_s"]) / 60.0
+                for stage in STAGES
+            }
+            recorded_total = float(metrics["timing_summary"]["training_total_s"]) / 60.0
+            if abs(sum(stage_minutes.values()) - recorded_total) > 1e-7:
+                raise ValueError(
+                    f"Stage sum does not match total training time: {metrics_path}"
+                )
+            for stage, value in stage_minutes.items():
+                stage_samples[stage].append(value)
+            total_samples.append(recorded_total)
+
+        summary[method] = {
+            "stages": {stage: statistics.mean(values) for stage, values in stage_samples.items()},
+            "stage_stds": {stage: statistics.stdev(values) for stage, values in stage_samples.items()},
+            "total_mean": statistics.mean(total_samples),
+            "total_std": statistics.stdev(total_samples),
+        }
+    return summary
+
+
+def main() -> None:
+    summaries = {
+        equation: load_stage_summary(config)
+        for equation, config in EXPERIMENTS.items()
+    }
+
+    fig, axes = plt.subplots(1, 2, figsize=(8.4, 3.65))
+    fig.subplots_adjust(left=0.10, right=0.985, bottom=0.30, top=0.77, wspace=0.27)
+    centers = tuple(range(len(STAGES)))
+    stage_labels = (
+        "Warm-up",
+        "Pre-train*",
+        "Main Adam",
+        "Fine-tune",
+        "L-BFGS",
+    )
+
+    for panel, (ax, (equation, summary)) in enumerate(zip(axes, summaries.items())):
+        ymax = 0.0
+        for method in METHODS:
+            means = [summary[method]["stages"][stage] for stage in STAGES]
+            ax.plot(
+                centers,
+                means,
+                color=METHOD_COLORS[method],
+                marker=METHOD_MARKERS[method],
+                markersize=6.0,
+                markerfacecolor=METHOD_COLORS[method],
+                markeredgecolor="#FFFFFF",
+                markeredgewidth=0.9,
+                linewidth=2.0,
+                label=LABELS[method],
+                zorder=3,
+            )
+            ymax = max(ymax, max(means))
+
+        ax.set_ylim(0.0, ymax * 1.27)
+        ax.set_xticks(centers)
+        ax.set_xticklabels(stage_labels, fontsize=8.2)
+        ax.set_ylabel("Time (min)", fontsize=9.7)
+        ax.text(
+            0.5,
+            -0.15,
+            "* DASA subnet only",
+            transform=ax.transAxes,
+            ha="center",
+            va="top",
+            fontsize=7.3,
+            color="#59636D",
+        )
+        ax.text(
+            0.5,
+            -0.34,
+            f"({chr(ord('a') + panel)}) {equation}",
+            transform=ax.transAxes,
+            ha="center",
+            va="top",
+            fontsize=10.2,
+        )
+        ax.text(
+            0.02,
+            0.96,
+            "Total: "
+            f"PINN {summary['PINN']['total_mean']:.1f}; "
+            f"DASA {summary['DASA']['total_mean']:.1f} min",
+            transform=ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=7.9,
+            color="#59636D",
+        )
+        ax.grid(axis="y", color="#DCE2E6", linewidth=0.75, zorder=0)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.spines["left"].set_color("#69727D")
+        ax.spines["bottom"].set_color("#69727D")
+        ax.tick_params(colors="#303841", labelsize=8.7)
+
+    legend_handles, legend_labels = axes[0].get_legend_handles_labels()
+    fig.legend(
+        legend_handles,
+        legend_labels,
+        frameon=False,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 0.99),
+        ncol=2,
+        fontsize=9.3,
+        handlelength=1.6,
+        columnspacing=1.5,
+    )
+    fig.savefig(ROOT / "training_time_lshape_wave_pinn_vs_dasa.png", dpi=300, facecolor="white")
+    fig.savefig(ROOT / "training_time_lshape_wave_pinn_vs_dasa.pdf", facecolor="white")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,21 @@
+{
+  "experiment_name": "stage1_high_10000",
+  "category": "stage_length",
+  "variant": "stage1_10000",
+  "sensitivity_axis": "stage1_warmup",
+  "method": "dasa",
+  "backbone": {"type": "modified_mlp", "depth": 6, "width": 128},
+  "subnet": {"depth": 5, "width": 10},
+  "data": {"n_interior_candidates": 10000, "n_boundary_per_segment": 128, "resample_every": 1000},
+  "loss": {"boundary_weight": 100.0},
+  "optimization": {
+    "lr_backbone": 0.001, "lr_subnet": 0.001, "finetune_start_lr": 2.82475249e-05,
+    "warmup_steps": 10000, "subnet_pretrain_steps": 2000, "main_steps": 10000, "finetune_steps": 10000,
+    "scheduler_step": 1000, "scheduler_gamma": 0.7,
+    "subnet_update_every": 1, "subnet_updates_per_backbone": 1,
+    "lbfgs_outer_steps": 0, "lbfgs_lr": 0.8, "lbfgs_max_iter": 100,
+    "lbfgs_tolerance_grad": 1e-5, "lbfgs_tolerance_change": 1e-9, "lbfgs_history_size": 100,
+    "lbfgs_line_search_fn": null
+  },
+  "logging": {"log_every": 1000, "lbfgs_log_every": 10}
+}

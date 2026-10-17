@@ -1,0 +1,2 @@
+comparison,parameter_overhead_pct,main_time_overhead_pct,adam_total_time_overhead_pct,full_training_time_overhead_pct,relative_l2_change_pct,relative_l2_reduction_pct,max_error_change_pct
+DASA_vs_PINN,0.5725122553404738,-40.480823826496085,-24.48958867053026,-24.48958867053026,-1.3688051106814592,1.3688051106814592,1.215694919525001

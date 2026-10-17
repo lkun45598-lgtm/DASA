@@ -1,0 +1,6 @@
+{
+  "case": "discontinuous_advection",
+  "l2_relative_error": 0.0799853847472678,
+  "maximum_pointwise_error": 0.9733257293701172,
+  "seed": 7
+}

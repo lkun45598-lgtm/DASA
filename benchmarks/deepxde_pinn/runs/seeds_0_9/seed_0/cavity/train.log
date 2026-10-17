@@ -1,0 +1,4 @@
+Using backend: pytorch
+Other supported backends: tensorflow.compat.v1, tensorflow, jax, paddle.
+paddle supports more examples now and is recommended.
+{'case': 'cavity', 'seed': 0, 'l2_relative_error': 0.08948414723658799, 'maximum_pointwise_error': 0.21548008436262622}

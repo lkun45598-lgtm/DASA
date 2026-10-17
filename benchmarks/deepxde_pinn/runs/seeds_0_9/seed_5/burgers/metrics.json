@@ -1,0 +1,6 @@
+{
+  "case": "burgers",
+  "l2_relative_error": 0.0006249788124175439,
+  "maximum_pointwise_error": 0.004929718322116083,
+  "seed": 5
+}

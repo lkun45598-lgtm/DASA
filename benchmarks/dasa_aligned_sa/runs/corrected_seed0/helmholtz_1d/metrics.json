@@ -1,0 +1,6 @@
+{
+  "case": "helmholtz_1d",
+  "l2_relative_error": 1.0000000267973206,
+  "maximum_pointwise_error": 1.0000018361606635,
+  "seed": 0
+}

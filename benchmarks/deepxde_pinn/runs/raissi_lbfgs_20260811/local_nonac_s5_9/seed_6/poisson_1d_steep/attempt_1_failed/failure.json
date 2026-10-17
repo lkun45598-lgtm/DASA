@@ -1,0 +1,7 @@
+{
+  "case": "poisson_1d_steep",
+  "error": "non-finite evaluation metric",
+  "error_type": "FloatingPointError",
+  "seed": 6,
+  "traceback": "Traceback (most recent call last):\n  File \"/data1/user/lz/SA-PINNs/benchmarks/deepxde_pinn/scripts/run_case.py\", line 48, in main\n    result = Trainer(\n  File \"/data1/user/lz/SA-PINNs/benchmarks/deepxde_pinn/trainer.py\", line 237, in run\n    raise FloatingPointError(\"non-finite evaluation metric\")\nFloatingPointError: non-finite evaluation metric\n"
+}

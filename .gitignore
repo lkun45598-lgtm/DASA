@@ -1,0 +1,22 @@
+.conda-env/
+__pycache__/
+*.py[cod]
+.DS_Store
+.matplotlib/
+.pip-cache/
+.tmp/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# 压缩包 / 截图 / 论文 PDF(本地资料,不入库)
+*.rar
+*.7z
+*.zip
+*.png.bak
+img_v3_*.jpg
+屏幕截图*.png
+*.pdf
+
+# 模型权重
+*.pt
+*.pth

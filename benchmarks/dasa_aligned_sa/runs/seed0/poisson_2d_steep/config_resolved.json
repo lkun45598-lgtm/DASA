@@ -1,0 +1,64 @@
+{
+  "case": {
+    "case_id": "poisson_2d_steep",
+    "domain": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "family": "static_2d",
+    "network": {
+      "activation": "tanh",
+      "fourier": "none",
+      "hidden_layers": 6,
+      "initializer": "glorot_normal",
+      "output_dim": 1,
+      "width": 128
+    },
+    "optimizer": {
+      "adam_steps": 22000,
+      "decay_rate": 0.9,
+      "decay_steps": 2000,
+      "lbfgs_steps": 1000,
+      "learning_rate": 0.001,
+      "loss_weights": {
+        "boundary": 100.0,
+        "initial": 100.0,
+        "residual": 1.0
+      },
+      "stages": [
+        1000,
+        1000,
+        10000,
+        10000
+      ]
+    },
+    "parameters": {
+      "frequency": 2.0,
+      "steepness": 10.0
+    },
+    "provenance": {
+      "equation": "paper",
+      "network": "paper",
+      "optimizer": "paper",
+      "sampling": "paper"
+    },
+    "sampling": {
+      "boundary": 50,
+      "initial": 0,
+      "method": "uniform",
+      "residual": 2500,
+      "residual_grid": []
+    }
+  },
+  "run_budget": {
+    "adam_steps": 22000,
+    "lbfgs_steps": 1000
+  },
+  "seed": 0
+}

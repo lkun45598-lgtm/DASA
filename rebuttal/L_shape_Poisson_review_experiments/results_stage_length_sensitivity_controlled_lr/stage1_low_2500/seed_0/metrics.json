@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "experiment_name": "stage1_low_2500",
+  "category": "stage_length",
+  "variant": "stage1_2500",
+  "sensitivity_axis": "stage1_warmup",
+  "method": "dasa",
+  "seed": 0,
+  "config": {
+    "experiment_name": "stage1_low_2500",
+    "category": "stage_length",
+    "variant": "stage1_2500",
+    "sensitivity_axis": "stage1_warmup",
+    "method": "dasa",
+    "backbone": {
+      "type": "modified_mlp",
+      "depth": 6,
+      "width": 128
+    },
+    "subnet": {
+      "depth": 5,
+      "width": 10
+    },
+    "data": {
+      "n_interior_candidates": 10000,
+      "n_boundary_per_segment": 128,
+      "resample_every": 1000
+    },
+    "loss": {
+      "boundary_weight": 100.0
+    },
+    "optimization": {
+      "lr_backbone": 0.001,
+      "lr_subnet": 0.001,
+      "warmup_steps": 2500,
+      "subnet_pretrain_steps": 2000,
+      "main_steps": 10000,
+      "finetune_steps": 10000,
+      "scheduler_step": 1000,
+      "scheduler_gamma": 0.7,
+      "subnet_update_every": 1,
+      "subnet_updates_per_backbone": 1,
+      "lbfgs_outer_steps": 0,
+      "lbfgs_lr": 0.8,
+      "lbfgs_max_iter": 100,
+      "lbfgs_tolerance_grad": 1e-05,
+      "lbfgs_tolerance_change": 1e-09,
+      "lbfgs_history_size": 100,
+      "lbfgs_line_search_fn": null
+    },
+    "logging": {
+      "log_every": 1000,
+      "lbfgs_log_every": 10
+    }
+  },
+  "parameter_counts": {
+    "backbone_trainable": 83841,
+    "backbone_all": 83841,
+    "subnet_trainable": 480,
+    "subnet_all": 481,
+    "total_trainable": 84321,
+    "total_all": 84322,
+    "trainable_overhead_vs_backbone_pct": 0.5725122553404659
+  },
+  "data_counts_first_batch": {
+    "interior_candidates": 10000,
+    "retained_interior": 7485,
+    "boundary": 1024
+  },
+  "stage_timings": {
+    "warmup": {
+      "elapsed_s": 62.56080540898256,
+      "primary_steps": 2500,
+      "backbone_updates": 2500,
+      "subnet_updates": 0,
+      "seconds_per_primary_step": 0.025024322163593023,
+      "last_loss": {
+        "loss": 0.0007327035418711603,
+        "loss_r": 0.00014435859338846058,
+        "loss_b": 5.883449375687633e-06
+      },
+      "backbone_lr_end": 0.001,
+      "subnet_lr_end": 0.001
+    },
+    "subnet_pretrain": {
+      "elapsed_s": 23.67612833098974,
+      "primary_steps": 2000,
+      "backbone_updates": 0,
+      "subnet_updates": 2000,
+      "seconds_per_primary_step": 0.01183806416549487,
+      "last_loss": {
+        "loss": 0.006138622760772705,
+        "loss_r": 0.0056200106628239155,
+        "loss_b": 5.186123416933697e-06
+      },
+      "backbone_lr_end": 0.001,
+      "subnet_lr_end": 0.001
+    },
+    "main": {
+      "elapsed_s": 278.1225743080722,
+      "primary_steps": 10000,
+      "backbone_updates": 10000,
+      "subnet_updates": 10000,
+      "seconds_per_primary_step": 0.027812257430807223,
+      "last_loss": {
+        "loss": 0.00030743799288757145,
+        "loss_r": 5.4857900977367535e-05,
+        "loss_b": 2.5258009372919332e-06
+      },
+      "backbone_lr_end": 2.8247524899999994e-05,
+      "subnet_lr_end": 0.001
+    },
+    "finetune": {
+      "elapsed_s": 237.07899822900072,
+      "primary_steps": 10000,
+      "backbone_updates": 10000,
+      "subnet_updates": 0,
+      "seconds_per_primary_step": 0.023707899822900072,
+      "last_loss": {
+        "loss": 6.295465573202819e-05,
+        "loss_r": 1.5910318325040862e-05,
+        "loss_b": 4.704433820279519e-07
+      },
+      "backbone_lr_end": 2.8247524899999994e-05,
+      "subnet_lr_end": 0.001
+    },
+    "lbfgs": {
+      "elapsed_s": 0.0,
+      "primary_steps": 0,
+      "backbone_updates": 0,
+      "subnet_updates": 0,
+      "seconds_per_primary_step": null,
+      "last_loss": null
+    }
+  },
+  "evaluations": {
+    "after_warmup": {
+      "relative_l2": 0.039985830300373476,
+      "max_abs_error": 0.02733781933784485,
+      "mean_abs_error": 0.0012512322913332543,
+      "rmse": 0.0030639468769680556,
+      "evaluation_s": 0.014652927056886256,
+      "n_test": 109610
+    },
+    "after_main": {
+      "relative_l2": 0.03166007504329484,
+      "max_abs_error": 0.024096447974443436,
+      "mean_abs_error": 0.0008184487407373141,
+      "rmse": 0.002425979086210733,
+      "evaluation_s": 0.006969935027882457,
+      "n_test": 109610
+    },
+    "after_finetune": {
+      "relative_l2": 0.009631751200494377,
+      "max_abs_error": 0.012236405164003372,
+      "mean_abs_error": 0.00026457098898462504,
+      "rmse": 0.0007380407956718714,
+      "evaluation_s": 0.006899764994159341,
+      "n_test": 109610
+    },
+    "final": {
+      "relative_l2": 0.009631751200494377,
+      "max_abs_error": 0.012236405164003372,
+      "mean_abs_error": 0.00026457098898462504,
+      "rmse": 0.0007380407956718714,
+      "evaluation_s": 0.006580448010936379,
+      "n_test": 109610
+    }
+  },
+  "timing_summary": {
+    "adam_total_s": 601.4385062770452,
+    "training_total_s": 601.4385062770452,
+    "peak_gpu_memory_mb": 631.24072265625
+  },
+  "environment": {
+    "python": "3.10.19 (main, Oct 21 2025, 16:43:05) [GCC 11.2.0]",
+    "platform": "Linux-5.4.0-216-generic-x86_64-with-glibc2.31",
+    "torch": "2.6.0+cu124",
+    "numpy": "2.2.5",
+    "device": "cuda:0",
+    "cuda_available": true,
+    "cuda_runtime": "12.4",
+    "gpu_name": "NVIDIA A100-SXM4-80GB"
+  }
+}

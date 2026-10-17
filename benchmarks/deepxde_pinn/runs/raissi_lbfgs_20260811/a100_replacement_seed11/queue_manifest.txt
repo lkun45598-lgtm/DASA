@@ -1,0 +1,4 @@
+training_profile=raissi_lbfgs
+cases=poisson_1d_steep
+seeds=11
+workers_per_gpu=1

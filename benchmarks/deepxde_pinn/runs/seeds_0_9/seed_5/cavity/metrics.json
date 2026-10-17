@@ -1,0 +1,6 @@
+{
+  "case": "cavity",
+  "l2_relative_error": 0.07216842950355769,
+  "maximum_pointwise_error": 0.13439476833184483,
+  "seed": 5
+}

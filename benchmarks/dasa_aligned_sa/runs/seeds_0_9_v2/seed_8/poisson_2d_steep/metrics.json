@@ -1,0 +1,6 @@
+{
+  "case": "poisson_2d_steep",
+  "l2_relative_error": 0.005485469286082754,
+  "maximum_pointwise_error": 0.030790084972977638,
+  "seed": 8
+}

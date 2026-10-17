@@ -1,0 +1,6 @@
+{
+  "case": "diffusion_reaction",
+  "l2_relative_error": 0.00023807355065500146,
+  "maximum_pointwise_error": 0.00034872598949647893,
+  "seed": 6
+}

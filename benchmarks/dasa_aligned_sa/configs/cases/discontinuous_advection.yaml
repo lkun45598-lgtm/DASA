@@ -1,0 +1,10 @@
+{
+  "case_id": "discontinuous_advection",
+  "family": "time_1d",
+  "domain": [[0.0, 1.0], [-1.5, 1.5]],
+  "parameters": {"velocity": 1.0, "kappa": 0.0, "pulse_half_width": 0.2},
+  "sampling": {"residual": 25600, "boundary": 256, "initial": 512, "method": "lhs", "residual_grid": []},
+  "network": {"hidden_layers": 4, "width": 64, "activation": "tanh", "initializer": "glorot_normal", "output_dim": 1, "fourier": "none"},
+  "optimizer": {"stages": [5000, 2000, 10000, 10000], "adam_steps": 27000, "lbfgs_steps": 1000, "learning_rate": 0.001, "decay_rate": 0.9, "decay_steps": 2000, "loss_weights": {"residual": 1.0, "boundary": 100.0, "initial": 100.0}},
+  "provenance": {"equation": "paper", "sampling": "user", "network": "user", "optimizer": "paper"}
+}

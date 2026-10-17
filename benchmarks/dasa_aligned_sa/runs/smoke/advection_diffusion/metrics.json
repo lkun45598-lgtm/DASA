@@ -1,0 +1,6 @@
+{
+  "case": "advection_diffusion",
+  "l2_relative_error": 1.0,
+  "maximum_pointwise_error": 4.81885681365161e+25,
+  "seed": 0
+}

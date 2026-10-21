@@ -76,7 +76,7 @@ pgrep -af 'poisson_1d_gpinn_rar' || true
 rsync -avh --progress \
   --exclude 'results*/' \
   --exclude '__pycache__/' \
-  "/Users/0v0/Desktop/gpinn-main/gpinn汇总/experiments/poisson_1d_gpinn_rar/" \
+  experiments/poisson_1d_gpinn_rar/ \
   cjm@sus-server:~/experiments/poisson_1d_gpinn_rar/
 ```
 

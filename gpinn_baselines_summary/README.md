@@ -5,7 +5,7 @@
 ## 目录
 
 ```text
-gpinn汇总/
+gpinn_baselines_summary/
 ├── gpinn_baselines/       # 13 个纯 gPINN 算例的统一主线
 ├── experiments/           # Allen–Cahn、Burgers、Helmholtz、Poisson 独立实验
 ├── tests/                 # 主线与独立实验测试
@@ -21,7 +21,7 @@ gpinn汇总/
 Python 3.10 或更高版本：
 
 ```bash
-cd "/Users/0v0/Desktop/gpinn-main/gpinn汇总"
+cd gpinn_baselines_summary
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip

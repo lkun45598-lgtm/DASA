@@ -31,7 +31,7 @@ $$
 使用仓库根目录的环境即可（`torch`、`numpy`、`scipy`、`matplotlib`）：
 
 ```bash
-cd "/Users/0v0/Desktop/gpinn-main/gpinn汇总"
+cd gpinn_baselines_summary
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip

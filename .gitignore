@@ -20,3 +20,4 @@ img_v3_*.jpg
 # 模型权重
 *.pt
 *.pth
+.cache/

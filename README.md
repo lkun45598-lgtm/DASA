@@ -1,107 +1,40 @@
-# Self-Adaptive PINN - Official Implementation
+# DASA-PINNs 实验代码
 
-## Self-Adaptive Physics-Informed Neural Networks using a Soft Attention Mechanism [AAAI-MLPS 2021]
+按 **method → 方程** 组织:每个 `methods/<method>/` 对应一种方法,其下按方程分目录或配置。
+`experiments/` 存放跨方法的对比实验(rebuttal)及其结果。
 
-### Levi McClenny<sup>1,2</sup>, Ulisses Braga-Neto<sup>1</sup>
-
-### Accepted to [AAAI-MLPS 2021](https://sites.google.com/view/aaai-mlps/proceedings?authuser=0) 
-
-### Update: The self-adaptive implementations of the Allen-Cahn, Burgers, and Helmholtz PDE systems, shown here, are available in our new package [*TensorDiffEq*](https://github.com/tensordiffeq/TensorDiffEq)
-#### Those examples in *TensorDiffEq* are available [here](https://github.com/tensordiffeq/TensorDiffEq/tree/main/examples)
-
-Paper: https://arxiv.org/pdf/2009.04544.pdf
-
-Abstract: _Physics-Informed Neural Networks (PINNs) have emerged recently as a promising application of deep neural networks to the numerical solution of nonlinear partial differential equations (PDEs).
-However, the original PINN algorithm is known to suffer from stability and accuracy problems in
-cases where the solution has sharp spatio-temporal transitions. These stiff PDEs require an unreasonably large number of collocation points to be solved accurately. It has been recognized that adaptive procedures are needed to force the neural network to fit accurately the stubborn spots in the solution of stiff PDEs. To accomplish this, previous approaches have used fixed weights hard-coded over regions of the solution deemed to be important. In this paper, we propose a fundamentally new method to train PINNs adaptively, where the adaptation weights are fully trainable, so the neural network learns by itself which regions of the solution are difficult and is forced to focus on them, which is reminiscent of soft multiplicative-mask attention mechanism used in computer vision. The basic idea behind these Self-Adaptive PINNs is to make the weights increase where the corresponding loss is higher, which is accomplished by training the network to simultaneously minimize the losses and maximize the weights, i.e., to find a saddle point in the cost surface. We show that this is formally equivalent to solving a PDE-constrained optimization problem using a penalty-based method, though in a way where the monotonically-nondecreasing penalty coefficients are trainable.
-Numerical experiments with an Allen-Cahn stiff PDE, the Self-Adaptive PINN outperformed other state-of-the-art PINN algorithms in L2 error by a wide margin, while using a smaller number of training epochs. An Appendix contains additional results with Burger's and Helmholtz PDEs, which confirmed the trends observed in the Allen-Cahn experiments._
-
-<sub><sub><sup>1</sup>Texas A&M Dept. of Electrical Engineering, College Station, TX</sub></sub><br>
-<sub><sub><sup>2</sup>US Army CCDC Army Research Lab, Aberdeen Proving Ground/Adelphi, MD</sub></sub><br>
-
-## Requirements
-
-Code was implemented in `python 3.7` with the following package versions:
-
-```
-tensorflow version = 2.3
-keras version = 2.2.4
+```text
+methods/
+├── sa_pinn/            原版 Self-Adaptive PINN(TensorFlow)
+│   ├── allen_cahn/ burgers/ helmholtz/   GPU 兼容修改版
+│   ├── original/       McClenny & Braga-Neto 原始代码(未改动)
+│   └── tests/
+├── sa_pinn_aligned/    SA-PINN 对齐 DASA 论文 13 个正向算例(PyTorch,多种子)
+├── dasa/               DASA-PINNs(权重预测子网络)
+│   └── l_shape_poisson/{original,refactored}
+├── plain_pinn/         经典 PINN 基线
+│   ├── poisson_1d/  allen_cahn_1d/
+├── deepxde_pinn/       DeepXDE 版 PINN 基线(13 算例)
+├── gpinn/              gPINN / RAR 基线
+│   ├── gpinn_baselines/(13 算例统一实现)  experiments/(Allen–Cahn、Burgers、Helmholtz、Poisson)
+├── hp_vpinn/
+│   └── poisson_1d_boundary_layer/
+experiments/
+├── rebuttal_l_shape_poisson/   L 形 Poisson 审稿实验(含各方法代码快照与结果)
+└── rebuttal_wave_equation/     波动方程审稿实验
+docs/superpowers/               设计文档与实施计划
 ```
 
-and `matplotlib 3.1.1` was used for visualization. It is expected that any combination of recent numpy/matplotlib will be sufficient, however issues have been experienced on tensorflow versions <2.3.0
+方程覆盖见 [methods/README.md](methods/README.md)。
 
-### Virtual Environment (Optional)
+## 注意
 
-**(Mac)** To create a virtual environment to run this code, download the repository either via `git clone` or by clicking download at the top of github, then navigate to the top-level folder in a terminal window and execute the commands
+- 各 method 内部是自包含的:从仓库根目录运行,例如
+  `python -m methods.sa_pinn_aligned.scripts.run_case ...`、`python -m methods.deepxde_pinn.scripts.run_case ...`。
+- `sa_pinn_aligned` 与 `deepxde_pinn` 读取 `methods/sa_pinn/burgers/burgers_shock.mat`
+  和 `methods/sa_pinn/allen_cahn/AC.mat`。
+- `experiments/` 下的代码快照是当时实验的原样记录,内部相对路径保持旧布局,不随 `methods/` 调整。
+- 论文 PDF、压缩包、截图与模型权重(`.pt/.pth`)不入库,见 `.gitignore`。
+- 环境:`environment.yml` / `environment-lock.yml`。
 
-```
-python3 -m venv --system-site-packages ./venv
-source ./venv/bin/activate
-```
-
-This will create a virtual environment named `venv` in that directory (first line) and drop you into it (second line). At that point you can install/uninstall package versions without effecting your overall environment. You can verify you're in the virtual environment if you see `(venv)` at the beginning of your terminal line. At this point you can install the exact versions of the packages listed here with the pip into the venv:
-
-```
-pip install tensorflow==2.3 numpy==1.17.2 keras==2.2.4
-```
-
-run
-
-```
-python versiontest.py
-```
-
-And you should see the following output:
-
-```
-Using TensorFlow backend
-tensorflow version = 2.3
-keras version = 2.2.4
-numpy version = 1.17.2
-```
-
-## TeX Dependencies
-
-**(Debian)** Some plots require TeX packages, you can have them installed using the following command:
-
-```
-sudo apt-get -qq install texlive-fonts-recommended texlive-fonts-extra dvipng
-```
-
-## Data
-
-The data used in this paper is publicly available in the Raissi implementation of Physics-Informed Neural Networks [found here](https://github.com/maziarraissi/PINNs). It has already been copied into the appropriate directories for utilization in the script files.
-
-## Usage
-
-You can recreate the results of the paper by simply navigating to the desired system (i.e. opening the Burgers folder) and running the .py script in the folder. After opening the Burgers folder, simply run
-
-```
-python burgers.py
-```
-
-And the training will begin, followed by the plots.
-
-## Note
-
-The results in the paper were calculated on GPU. Running for the full 10k/10k training iterations for Adam and L-BFGS will likely take a very long time on CPU.
-
-## Citation
-
-Cite using the Bibtex citation below:
-
-```
-@article{mcclenny2020self,
-  title={Self-Adaptive Physics-Informed Neural Networks using a Soft Attention Mechanism},
-  author={McClenny, Levi and Braga-Neto, Ulisses},
-  journal={arXiv preprint arXiv:2009.04544},
-  year={2020}
-}
-
-```
-
-## Additional baselines
-
-- `1D_Poisson_baseline/` — original plain-PINN baseline for 1D Poisson.
-- `1D_Poisson_boundary_layer_hpVPINNs/` — hp-VPINN for the 1D Poisson boundary-layer problem.
-- `gpinn_baselines_summary/` — gPINN / RAR baselines (Poisson, Burgers, Allen-Cahn, Helmholtz); see its own README.
+原 SA-PINN 说明见 [methods/sa_pinn/README.md](methods/sa_pinn/README.md)。

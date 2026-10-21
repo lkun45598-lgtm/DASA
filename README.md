@@ -99,3 +99,9 @@ Cite using the Bibtex citation below:
 }
 
 ```
+
+## Additional baselines
+
+- `1D_Poisson_baseline/` — original plain-PINN baseline for 1D Poisson.
+- `1D_Poisson_boundary_layer_hpVPINNs/` — hp-VPINN for the 1D Poisson boundary-layer problem.
+- `gpinn_baselines_summary/` — gPINN / RAR baselines (Poisson, Burgers, Allen-Cahn, Helmholtz); see its own README.
